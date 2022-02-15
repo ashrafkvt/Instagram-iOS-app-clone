@@ -8,13 +8,13 @@
 import UIKit
 
 
-class SearchController: UIViewController{
+class SearchViewController: UIViewController{
     
 //    MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .purple
+        view.backgroundColor = .systemRed
     }
     
 }

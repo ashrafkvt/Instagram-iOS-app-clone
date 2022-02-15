@@ -8,13 +8,12 @@
 import UIKit
 
 
-class FeedController: UIViewController{
+class FeedViewController: UIViewController{
     
 //    MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .purple
     }
     
 }

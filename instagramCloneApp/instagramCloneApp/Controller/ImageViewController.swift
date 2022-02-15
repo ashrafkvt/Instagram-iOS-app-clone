@@ -8,13 +8,14 @@
 import UIKit
 
 
-class ImageController: UIViewController{
+class ImageViewController: UIViewController{
     
 //    MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .purple
+        view.backgroundColor = .systemGray
+        
     }
     
 }

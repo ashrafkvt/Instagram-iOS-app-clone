@@ -13,6 +13,12 @@
 		DCC15E3F27BA461B0051C26F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCC15E3D27BA461B0051C26F /* Main.storyboard */; };
 		DCC15E4127BA461F0051C26F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCC15E4027BA461F0051C26F /* Assets.xcassets */; };
 		DCC15E4427BA461F0051C26F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCC15E4227BA461F0051C26F /* LaunchScreen.storyboard */; };
+		DCC15E5227BA656A0051C26F /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC15E5127BA656A0051C26F /* MainTabBarController.swift */; };
+		DCC15E5927BA84480051C26F /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC15E5827BA84480051C26F /* FeedViewController.swift */; };
+		DCC15E5B27BA84530051C26F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC15E5A27BA84530051C26F /* SearchViewController.swift */; };
+		DCC15E5D27BA84630051C26F /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC15E5C27BA84630051C26F /* ImageViewController.swift */; };
+		DCC15E5F27BA84730051C26F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC15E5E27BA84730051C26F /* ProfileViewController.swift */; };
+		DCC15E6127BA84860051C26F /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC15E6027BA84860051C26F /* NotificationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +30,12 @@
 		DCC15E4027BA461F0051C26F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DCC15E4327BA461F0051C26F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DCC15E4527BA461F0051C26F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DCC15E5127BA656A0051C26F /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		DCC15E5827BA84480051C26F /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		DCC15E5A27BA84530051C26F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		DCC15E5C27BA84630051C26F /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		DCC15E5E27BA84730051C26F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		DCC15E6027BA84860051C26F /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,12 @@
 		DCC15E3627BA461B0051C26F /* instagramCloneApp */ = {
 			isa = PBXGroup;
 			children = (
+				DCC15E5027BA64360051C26F /* ViewModel */,
+				DCC15E4F27BA64350051C26F /* View */,
+				DCC15E4E27BA64320051C26F /* Controller */,
+				DCC15E4D27BA64300051C26F /* API */,
+				DCC15E4C27BA642C0051C26F /* Utilities */,
+				DCC15E4B27BA639E0051C26F /* Model */,
 				DCC15E3727BA461B0051C26F /* AppDelegate.swift */,
 				DCC15E3927BA461B0051C26F /* SceneDelegate.swift */,
 				DCC15E3B27BA461B0051C26F /* ViewController.swift */,
@@ -65,6 +83,54 @@
 				DCC15E4527BA461F0051C26F /* Info.plist */,
 			);
 			path = instagramCloneApp;
+			sourceTree = "<group>";
+		};
+		DCC15E4B27BA639E0051C26F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DCC15E4C27BA642C0051C26F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		DCC15E4D27BA64300051C26F /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		DCC15E4E27BA64320051C26F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DCC15E5127BA656A0051C26F /* MainTabBarController.swift */,
+				DCC15E5827BA84480051C26F /* FeedViewController.swift */,
+				DCC15E5A27BA84530051C26F /* SearchViewController.swift */,
+				DCC15E5C27BA84630051C26F /* ImageViewController.swift */,
+				DCC15E6027BA84860051C26F /* NotificationViewController.swift */,
+				DCC15E5E27BA84730051C26F /* ProfileViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		DCC15E4F27BA64350051C26F /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DCC15E5027BA64360051C26F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +204,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCC15E5D27BA84630051C26F /* ImageViewController.swift in Sources */,
 				DCC15E3C27BA461B0051C26F /* ViewController.swift in Sources */,
+				DCC15E5B27BA84530051C26F /* SearchViewController.swift in Sources */,
 				DCC15E3827BA461B0051C26F /* AppDelegate.swift in Sources */,
+				DCC15E5927BA84480051C26F /* FeedViewController.swift in Sources */,
+				DCC15E5227BA656A0051C26F /* MainTabBarController.swift in Sources */,
+				DCC15E6127BA84860051C26F /* NotificationViewController.swift in Sources */,
 				DCC15E3A27BA461B0051C26F /* SceneDelegate.swift in Sources */,
+				DCC15E5F27BA84730051C26F /* ProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

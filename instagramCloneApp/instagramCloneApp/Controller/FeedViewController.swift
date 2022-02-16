@@ -8,7 +8,7 @@
 import UIKit
 
 
-class FeedViewController: UIViewController, UICollectionViewDataSource{
+class FeedViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     let feedsCollectionView: UICollectionView = {
         let viewLayout = UICollectionViewFlowLayout()
@@ -38,6 +38,7 @@ class FeedViewController: UIViewController, UICollectionViewDataSource{
             feedsCollectionView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor)
         ])
         feedsCollectionView.dataSource = self
+        feedsCollectionView.delegate = self
         feedsCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
     
@@ -51,6 +52,12 @@ class FeedViewController: UIViewController, UICollectionViewDataSource{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
         cell.backgroundColor = .red
         return cell
+    }
+    
+//    MARK: - UICollectionViewDelegate
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: self.view.frame.width, height: 200)
     }
     
 }

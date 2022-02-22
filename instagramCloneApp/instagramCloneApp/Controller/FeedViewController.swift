@@ -39,7 +39,7 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
         ])
         feedsCollectionView.dataSource = self
         feedsCollectionView.delegate = self
-        feedsCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        feedsCollectionView.register(FeedCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
     
 //  MARK: - UICollectionViewDataSource
@@ -49,15 +49,20 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-        cell.backgroundColor = .red
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FeedCell
         return cell
     }
     
 //    MARK: - UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.width, height: 200)
+        
+        let width = view.frame.size.width
+        var height =  width + 8 + 40 + 8
+        height += 50
+        height += 60
+        
+        return CGSize(width: width, height: height)
     }
     
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC40837E27C4D59E0042B392 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC40837D27C4D59E0042B392 /* FeedCell.swift */; };
+		DC40838027C4F3B80042B392 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC40837F27C4F3B80042B392 /* Extensions.swift */; };
 		DCC15E3827BA461B0051C26F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC15E3727BA461B0051C26F /* AppDelegate.swift */; };
 		DCC15E3A27BA461B0051C26F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC15E3927BA461B0051C26F /* SceneDelegate.swift */; };
 		DCC15E3C27BA461B0051C26F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC15E3B27BA461B0051C26F /* ViewController.swift */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DC40837D27C4D59E0042B392 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		DC40837F27C4F3B80042B392 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		DCC15E3427BA461B0051C26F /* instagramCloneApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = instagramCloneApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCC15E3727BA461B0051C26F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCC15E3927BA461B0051C26F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +99,7 @@
 		DCC15E4C27BA642C0051C26F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				DC40837F27C4F3B80042B392 /* Extensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -122,6 +127,7 @@
 		DCC15E4F27BA64350051C26F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DC40837D27C4D59E0042B392 /* FeedCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -205,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCC15E5D27BA84630051C26F /* ImageViewController.swift in Sources */,
+				DC40837E27C4D59E0042B392 /* FeedCell.swift in Sources */,
 				DCC15E3C27BA461B0051C26F /* ViewController.swift in Sources */,
 				DCC15E5B27BA84530051C26F /* SearchViewController.swift in Sources */,
 				DCC15E3827BA461B0051C26F /* AppDelegate.swift in Sources */,
@@ -212,6 +219,7 @@
 				DCC15E5227BA656A0051C26F /* MainTabBarController.swift in Sources */,
 				DCC15E6127BA84860051C26F /* NotificationViewController.swift in Sources */,
 				DCC15E3A27BA461B0051C26F /* SceneDelegate.swift in Sources */,
+				DC40838027C4F3B80042B392 /* Extensions.swift in Sources */,
 				DCC15E5F27BA84730051C26F /* ProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

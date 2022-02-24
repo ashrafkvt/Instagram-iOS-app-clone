@@ -21,6 +21,9 @@
 		DCC15E5D27BA84630051C26F /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC15E5C27BA84630051C26F /* ImageViewController.swift */; };
 		DCC15E5F27BA84730051C26F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC15E5E27BA84730051C26F /* ProfileViewController.swift */; };
 		DCC15E6127BA84860051C26F /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC15E6027BA84860051C26F /* NotificationViewController.swift */; };
+		DCF6E07D27C7D18700B3B9E5 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF6E07C27C7D18700B3B9E5 /* LoginController.swift */; };
+		DCF6E07F27C7D19400B3B9E5 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF6E07E27C7D19400B3B9E5 /* RegisterController.swift */; };
+		DCF6E08127C7D1F400B3B9E5 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF6E08027C7D1F400B3B9E5 /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		DCC15E5C27BA84630051C26F /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		DCC15E5E27BA84730051C26F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		DCC15E6027BA84860051C26F /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		DCF6E07C27C7D18700B3B9E5 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		DCF6E07E27C7D19400B3B9E5 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
+		DCF6E08027C7D1F400B3B9E5 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +120,7 @@
 		DCC15E4E27BA64320051C26F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				DCF6E07B27C7D17500B3B9E5 /* Authentication */,
 				DCC15E5127BA656A0051C26F /* MainTabBarController.swift */,
 				DCC15E5827BA84480051C26F /* FeedViewController.swift */,
 				DCC15E5A27BA84530051C26F /* SearchViewController.swift */,
@@ -128,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				DC40837D27C4D59E0042B392 /* FeedCell.swift */,
+				DCF6E08027C7D1F400B3B9E5 /* CustomTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -137,6 +145,15 @@
 			children = (
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DCF6E07B27C7D17500B3B9E5 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				DCF6E07C27C7D18700B3B9E5 /* LoginController.swift */,
+				DCF6E07E27C7D19400B3B9E5 /* RegisterController.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,7 +227,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCF6E08127C7D1F400B3B9E5 /* CustomTextField.swift in Sources */,
 				DCC15E5D27BA84630051C26F /* ImageViewController.swift in Sources */,
+				DCF6E07F27C7D19400B3B9E5 /* RegisterController.swift in Sources */,
+				DCF6E07D27C7D18700B3B9E5 /* LoginController.swift in Sources */,
 				DC40837E27C4D59E0042B392 /* FeedCell.swift in Sources */,
 				DCC15E3C27BA461B0051C26F /* ViewController.swift in Sources */,
 				DCC15E5B27BA84530051C26F /* SearchViewController.swift in Sources */,

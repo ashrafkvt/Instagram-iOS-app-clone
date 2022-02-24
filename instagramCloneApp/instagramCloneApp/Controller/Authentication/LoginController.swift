@@ -18,7 +18,7 @@ class LoginController: UIViewController, UITextFieldDelegate{
         return iv
     }()
     
-    private let emailTextField: UITextField = {
+    private let emailTextField: CustomTextField = {
         let tf = CustomTextField()
         tf.keyboardType = .emailAddress
         tf.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [.foregroundColor: UIColor(white: 1, alpha: 0.7)])
@@ -27,7 +27,7 @@ class LoginController: UIViewController, UITextFieldDelegate{
         return tf
     }()
     
-    private let passswordTextField: UITextField = {
+    private let passwordTextField: CustomTextField = {
         let tf = CustomTextField()
         tf.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [.foregroundColor: UIColor(white: 1, alpha: 0.7)])
         tf.isSecureTextEntry = true
@@ -39,11 +39,7 @@ class LoginController: UIViewController, UITextFieldDelegate{
     private let loginButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Log In", for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = UIColor(red: 0.26, green: 0.32, blue: 0.68, alpha: 1.00)
-        button.layer.cornerRadius = 5
-        button.setHeight(50)
+        button.configureButtonAppearance()
         return button
     }()
     
@@ -57,6 +53,7 @@ class LoginController: UIViewController, UITextFieldDelegate{
     private let dontHaveAccountButton: UIButton = {
         let button = UIButton(type: .system)
         button.setAttributedTitle(firstPart: "Don't have an account?  ", secondPart: "Sign Up")
+        button.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
         
         return button
     }()
@@ -66,7 +63,7 @@ class LoginController: UIViewController, UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.delegate = self
-        passswordTextField.delegate = self
+        passwordTextField.delegate = self
         configureUi()
         
     }
@@ -78,25 +75,25 @@ class LoginController: UIViewController, UITextFieldDelegate{
         return true
     }
     
+//    MARK: - Actions
+    
+    @objc func handleShowSignUp(){
+        let controller = RegisterController()
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
 //    MARK: - Helpers
     
     func configureUi(){
-        view.backgroundColor = .white
         self.navigationController?.navigationBar.isHidden = true
-        
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [UIColor.systemPurple.cgColor, UIColor.systemBlue.cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
-        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
-        view.layer.addSublayer(gradientLayer)
-        gradientLayer.frame = view.frame
+        self.configureGradientLayer()
         
         view.addSubview(iconImage)
         iconImage.centerX(inView: view)
         iconImage.setDimensions(height: 80, width: 120)
         iconImage.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 32)
         
-        let stackView = UIStackView(arrangedSubviews: [emailTextField, passswordTextField, loginButton, forgotPasswordButton])
+        let stackView = UIStackView(arrangedSubviews: [emailTextField, passwordTextField, loginButton, forgotPasswordButton])
         stackView.axis = .vertical
         stackView.spacing = 20
         view.addSubview(stackView)
@@ -110,9 +107,9 @@ class LoginController: UIViewController, UITextFieldDelegate{
     func switchBasedNextTextField(textField: UITextField){
         switch textField{
         case self.emailTextField:
-            self.passswordTextField.becomeFirstResponder()
+            self.passwordTextField.becomeFirstResponder()
         default:
-            self.passswordTextField.resignFirstResponder()
+            self.view.endEditing(true)
         }
     }
     

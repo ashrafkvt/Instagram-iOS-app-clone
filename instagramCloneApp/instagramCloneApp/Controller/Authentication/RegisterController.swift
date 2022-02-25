@@ -11,6 +11,8 @@ class RegisterController: UIViewController, UITextFieldDelegate{
     
 //    MARK: - Properties
     
+    private var viewModel = RegisterViewModel()
+    
     private let plusPhotoButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "plus_photo"), for: .normal)
@@ -44,7 +46,7 @@ class RegisterController: UIViewController, UITextFieldDelegate{
         return tf
     }()
     
-    private let userNameTextField: CustomTextField = {
+    private let usernameTextField: CustomTextField = {
         let tf = CustomTextField()
         tf.attributedPlaceholder = NSAttributedString(string: "Username", attributes: [.foregroundColor: UIColor(white: 1, alpha: 0.7)])
         tf.returnKeyType = .done
@@ -55,7 +57,9 @@ class RegisterController: UIViewController, UITextFieldDelegate{
     private let signUpButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Sign Up", for: .normal)
+        button.backgroundColor = UIColor(red: 0.65, green: 0.29, blue: 0.98, alpha: 0.5)
         button.configureButtonAppearance()
+        button.isEnabled = false
         return button
     }()
     
@@ -72,10 +76,11 @@ class RegisterController: UIViewController, UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUi()
+        configureNotificationObservers()
         emailTextField.delegate = self
         passwordTextField.delegate = self
         fullNameTextField.delegate = self
-        userNameTextField.delegate = self
+        usernameTextField.delegate = self
         
     }
     
@@ -92,6 +97,24 @@ class RegisterController: UIViewController, UITextFieldDelegate{
         self.navigationController?.popViewController(animated: true)
     }
     
+    @objc func textDidChange(sender: UITextField){
+        if sender == emailTextField{
+            viewModel.email = sender.text
+        }
+        else if sender == passwordTextField{
+            viewModel.password = sender.text
+        }
+        else if sender == fullNameTextField{
+            viewModel.fullname = sender.text
+        }
+        else{
+            viewModel.username = sender.text
+        }
+        
+        updateForm()
+        
+    }
+    
 //    MARK: - Helpers
     
     func configureUi(){
@@ -102,7 +125,7 @@ class RegisterController: UIViewController, UITextFieldDelegate{
         plusPhotoButton.setDimensions(height: 140, width: 140)
         plusPhotoButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 32)
         
-        let stackView: UIStackView = UIStackView(arrangedSubviews: [emailTextField, passwordTextField, fullNameTextField, userNameTextField, signUpButton])
+        let stackView: UIStackView = UIStackView(arrangedSubviews: [emailTextField, passwordTextField, fullNameTextField, usernameTextField, signUpButton])
         stackView.axis = .vertical
         stackView.spacing = 20
         
@@ -121,10 +144,28 @@ class RegisterController: UIViewController, UITextFieldDelegate{
         case self.passwordTextField:
             self.fullNameTextField.becomeFirstResponder()
         case self.fullNameTextField:
-            self.userNameTextField.becomeFirstResponder()
+            self.usernameTextField.becomeFirstResponder()
         default:
             self.view.endEditing(true)
         }
+    }
+    
+    func configureNotificationObservers(){
+        emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        fullNameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        usernameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    }
+    
+}
+
+//  MARK: - FormViewModel
+
+extension RegisterController: FormViewModel{
+    func updateForm() {
+        signUpButton.backgroundColor = viewModel.buttonBackgroundColor
+        signUpButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
+        signUpButton.isEnabled = viewModel.formIsValid
     }
     
     

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DC40837E27C4D59E0042B392 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC40837D27C4D59E0042B392 /* FeedCell.swift */; };
 		DC40838027C4F3B80042B392 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC40837F27C4F3B80042B392 /* Extensions.swift */; };
+		DC83AC6327C91B6F00D8D57C /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC83AC6227C91B6F00D8D57C /* AuthenticationViewModel.swift */; };
 		DCC15E3827BA461B0051C26F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC15E3727BA461B0051C26F /* AppDelegate.swift */; };
 		DCC15E3A27BA461B0051C26F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC15E3927BA461B0051C26F /* SceneDelegate.swift */; };
 		DCC15E3C27BA461B0051C26F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC15E3B27BA461B0051C26F /* ViewController.swift */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		DC40837D27C4D59E0042B392 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		DC40837F27C4F3B80042B392 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		DC83AC6227C91B6F00D8D57C /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		DCC15E3427BA461B0051C26F /* instagramCloneApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = instagramCloneApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCC15E3727BA461B0051C26F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCC15E3927BA461B0051C26F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 		DCC15E5027BA64360051C26F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				DC83AC6227C91B6F00D8D57C /* AuthenticationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				DCF6E07D27C7D18700B3B9E5 /* LoginController.swift in Sources */,
 				DC40837E27C4D59E0042B392 /* FeedCell.swift in Sources */,
 				DCC15E3C27BA461B0051C26F /* ViewController.swift in Sources */,
+				DC83AC6327C91B6F00D8D57C /* AuthenticationViewModel.swift in Sources */,
 				DCC15E5B27BA84530051C26F /* SearchViewController.swift in Sources */,
 				DCC15E3827BA461B0051C26F /* AppDelegate.swift in Sources */,
 				DCC15E5927BA84480051C26F /* FeedViewController.swift in Sources */,

@@ -33,7 +33,6 @@ extension UIButton{
     func configureButtonAppearance(){
         titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         setTitleColor(.white, for: .normal)
-        backgroundColor = UIColor(red: 0.26, green: 0.32, blue: 0.68, alpha: 1.00)
         layer.cornerRadius = 5
         setHeight(50)
     }

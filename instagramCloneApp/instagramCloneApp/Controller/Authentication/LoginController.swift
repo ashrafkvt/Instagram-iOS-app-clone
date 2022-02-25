@@ -11,6 +11,8 @@ class LoginController: UIViewController, UITextFieldDelegate{
     
 //    MARK: - Properties
     
+    private var viewModel = LoginViewModel()
+    
     private let iconImage: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: "Instagram_logo_white")
@@ -40,6 +42,8 @@ class LoginController: UIViewController, UITextFieldDelegate{
         let button = UIButton(type: .system)
         button.setTitle("Log In", for: .normal)
         button.configureButtonAppearance()
+        button.backgroundColor = UIColor(red: 0.65, green: 0.29, blue: 0.98, alpha: 0.5)
+        button.isEnabled = false
         return button
     }()
     
@@ -65,6 +69,7 @@ class LoginController: UIViewController, UITextFieldDelegate{
         emailTextField.delegate = self
         passwordTextField.delegate = self
         configureUi()
+        configureNotificationObservers()
         
     }
     
@@ -80,6 +85,17 @@ class LoginController: UIViewController, UITextFieldDelegate{
     @objc func handleShowSignUp(){
         let controller = RegisterController()
         self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @objc func textDidChange(sender: UITextField){
+        if sender == emailTextField{
+            viewModel.email = sender.text
+        }
+        else{
+            viewModel.password = sender.text
+        }
+        
+        updateForm()
     }
     
 //    MARK: - Helpers
@@ -113,7 +129,20 @@ class LoginController: UIViewController, UITextFieldDelegate{
         }
     }
     
+    func configureNotificationObservers(){
+        emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    }
     
-    
+}
+
+//  MARK: - FormViewModel
+
+extension LoginController: FormViewModel{
+    func updateForm() {
+        loginButton.backgroundColor = viewModel.buttonBackgroundColor
+        loginButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
+        loginButton.isEnabled = viewModel.formIsValid
+    }
     
 }

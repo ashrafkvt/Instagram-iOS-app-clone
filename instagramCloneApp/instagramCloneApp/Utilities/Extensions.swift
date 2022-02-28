@@ -8,6 +8,36 @@
 import Foundation
 import UIKit
 
+extension UIViewController{
+    func configureGradientLayer(){
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [UIColor.systemPurple.cgColor, UIColor.systemBlue.cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
+        view.layer.addSublayer(gradientLayer)
+        gradientLayer.frame = view.frame
+    }
+}
+
+extension UIButton{
+    func setAttributedTitle(firstPart: String, secondPart: String){
+        let atts: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.87), .font: UIFont.systemFont(ofSize: 16)]
+        let attributedTitle = NSMutableAttributedString(string: firstPart, attributes: atts)
+        
+        let boldAtts: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.87), .font: UIFont.boldSystemFont(ofSize: 16)]
+        attributedTitle.append(NSAttributedString(string: secondPart, attributes: boldAtts))
+        
+        setAttributedTitle(attributedTitle, for: .normal)
+    }
+    
+    func configureButtonAppearance(){
+        titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        setTitleColor(.white, for: .normal)
+        layer.cornerRadius = 5
+        setHeight(50)
+    }
+}
+
 
 extension UIView{
     func anchor(top: NSLayoutYAxisAnchor? = nil,

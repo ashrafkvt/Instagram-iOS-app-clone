@@ -17,6 +17,7 @@ class RegisterController: UIViewController, UITextFieldDelegate{
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "plus_photo"), for: .normal)
         button.tintColor = .white
+        button.addTarget(self, action: #selector(handleProfilePhotoSelection), for: .touchUpInside)
         return button
     }()
     
@@ -115,6 +116,14 @@ class RegisterController: UIViewController, UITextFieldDelegate{
         
     }
     
+    @objc func handleProfilePhotoSelection(){
+        let picker = UIImagePickerController()
+        picker.allowsEditing = true
+        picker.delegate = self
+        present(picker, animated: true)
+        
+    }
+    
 //    MARK: - Helpers
     
     func configureUi(){
@@ -167,8 +176,19 @@ extension RegisterController: FormViewModel{
         signUpButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
         signUpButton.isEnabled = viewModel.formIsValid
     }
-    
-    
+}
+
+//MARK: - UIImagePickerControllerDelegate
+
+extension RegisterController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let selectedImage = info[.editedImage] as? UIImage else {return}
+        
+        plusPhotoButton.layer.cornerRadius = plusPhotoButton.frame.width / 2
+        plusPhotoButton.layer.masksToBounds = true
+        plusPhotoButton.setImage(selectedImage.withRenderingMode(.alwaysOriginal), for: .normal)
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 
 

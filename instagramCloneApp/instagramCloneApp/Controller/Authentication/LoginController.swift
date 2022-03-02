@@ -25,6 +25,8 @@ class LoginController: UIViewController, UITextFieldDelegate{
         tf.keyboardType = .emailAddress
         tf.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [.foregroundColor: UIColor(white: 1, alpha: 0.7)])
         tf.returnKeyType = .next
+        tf.autocapitalizationType = .none
+        
         
         return tf
     }()
@@ -44,6 +46,7 @@ class LoginController: UIViewController, UITextFieldDelegate{
         button.configureButtonAppearance()
         button.backgroundColor = UIColor(red: 0.65, green: 0.29, blue: 0.98, alpha: 0.5)
         button.isEnabled = false
+        button.addTarget(self, action: #selector(handleLogIn), for: .touchUpInside)
         return button
     }()
     
@@ -85,6 +88,18 @@ class LoginController: UIViewController, UITextFieldDelegate{
     @objc func handleShowSignUp(){
         let controller = RegisterController()
         self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @objc func handleLogIn(){
+        guard let email = emailTextField.text?.lowercased() else {return}
+        guard let password = passwordTextField.text else {return}
+        AuthService.logInUser(email: email, password: password) { result, error in
+            if let error = error{
+                print("DEBUG: - Failed to log in user \(error.localizedDescription)")
+                return
+            }
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     @objc func textDidChange(sender: UITextField){

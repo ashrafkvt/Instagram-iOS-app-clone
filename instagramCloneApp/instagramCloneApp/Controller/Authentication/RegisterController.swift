@@ -145,7 +145,7 @@ class RegisterController: UIViewController, UITextFieldDelegate{
                 return
             }
             
-            print("DEBUG: Successfully registered the user")
+            self.dismiss(animated: true, completion: nil)
         }
     
     }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 
 class FeedViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
@@ -30,17 +31,33 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func setupCpllectionView(){
         self.view.addSubview(feedsCollectionView)
-        feedsCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            feedsCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            feedsCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            feedsCollectionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
-            feedsCollectionView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor)
-        ])
+        feedsCollectionView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.safeAreaLayoutGuide.leftAnchor,
+                                   bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.safeAreaLayoutGuide.rightAnchor)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain,
+                                                                                  target: self, action: #selector(handleLogout))
+        navigationItem.title = "Feed"
+        
         feedsCollectionView.dataSource = self
         feedsCollectionView.delegate = self
         feedsCollectionView.register(FeedCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
+    
+//    MARK: - Actions
+    
+    @objc func handleLogout(){
+        do{
+            try Auth.auth().signOut()
+            let controller = LoginController()
+            let nav = UINavigationController(rootViewController: controller)
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true, completion: nil)
+        }
+        catch {
+            print("DEBUG: - Failed to sign out")
+        }
+    }
+    
     
 //  MARK: - UICollectionViewDataSource
     

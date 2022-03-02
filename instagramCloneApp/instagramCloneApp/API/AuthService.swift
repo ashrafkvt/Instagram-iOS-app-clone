@@ -19,6 +19,11 @@ struct AuthCredentials{
 
 
 struct AuthService{
+    
+    static func logInUser(email: String, password: String, completion: AuthDataResultCallback?){
+        Auth.auth().signIn(withEmail: email, password: password, completion: completion)
+    }
+    
     static func registerUser(withCredentials credentials: AuthCredentials, completion: @escaping (Error?) -> Void){
         
         ImageUploader.uploadImage(image: credentials.profileImage) { imageUrl in
@@ -30,7 +35,9 @@ struct AuthService{
                 
                 guard let uid = result?.user.uid else {return}
                 
-                let data: [String: Any] = ["email": credentials.email, "fullname": credentials.fullname, "profileImageUrl": imageUrl, "username": credentials.username, "uid": uid]
+                let data: [String: Any] = ["email": credentials.email, "fullname": credentials.fullname,
+                                           "profileImageUrl": imageUrl, "username": credentials.username,
+                                           "uid": uid]
 
                 Firestore.firestore().collection("Users").document(uid).setData(data, completion: completion)
             }

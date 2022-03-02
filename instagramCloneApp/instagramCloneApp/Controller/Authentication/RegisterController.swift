@@ -12,6 +12,7 @@ class RegisterController: UIViewController, UITextFieldDelegate{
 //    MARK: - Properties
     
     private var viewModel = RegisterViewModel()
+    private var profileImage: UIImage?
     
     private let plusPhotoButton: UIButton = {
         let button = UIButton(type: .system)
@@ -26,6 +27,7 @@ class RegisterController: UIViewController, UITextFieldDelegate{
         tf.keyboardType = .emailAddress
         tf.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [.foregroundColor: UIColor(white: 1, alpha: 0.7)])
         tf.returnKeyType = .next
+        tf.autocapitalizationType = .none
         
         return tf
     }()
@@ -51,6 +53,7 @@ class RegisterController: UIViewController, UITextFieldDelegate{
         let tf = CustomTextField()
         tf.attributedPlaceholder = NSAttributedString(string: "Username", attributes: [.foregroundColor: UIColor(white: 1, alpha: 0.7)])
         tf.returnKeyType = .done
+        tf.autocapitalizationType = .none
         
         return tf
     }()
@@ -61,6 +64,7 @@ class RegisterController: UIViewController, UITextFieldDelegate{
         button.backgroundColor = UIColor(red: 0.65, green: 0.29, blue: 0.98, alpha: 0.5)
         button.configureButtonAppearance()
         button.isEnabled = false
+        button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
         return button
     }()
     
@@ -124,6 +128,28 @@ class RegisterController: UIViewController, UITextFieldDelegate{
         
     }
     
+    @objc func handleSignUp(){
+        guard let email = emailTextField.text?.lowercased() else {return}
+        guard let password = passwordTextField.text else {return}
+        guard let fullname = fullNameTextField.text else {return}
+        guard let username = usernameTextField.text?.lowercased() else {return}
+        guard let profileImage = self.profileImage else {return}
+        
+        let credentials = AuthCredentials(email: email, password: password,
+                                          fullname: fullname, username: username,
+                                          profileImage: profileImage)
+        
+        AuthService.registerUser(withCredentials: credentials) { error in
+            if let error = error{
+                print("DEBUG: Failed to register user \(error.localizedDescription)")
+                return
+            }
+            
+            print("DEBUG: Successfully registered the user")
+        }
+    
+    }
+    
 //    MARK: - Helpers
     
     func configureUi(){
@@ -183,6 +209,8 @@ extension RegisterController: FormViewModel{
 extension RegisterController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let selectedImage = info[.editedImage] as? UIImage else {return}
+        
+        self.profileImage = selectedImage
         
         plusPhotoButton.layer.cornerRadius = plusPhotoButton.frame.width / 2
         plusPhotoButton.layer.masksToBounds = true

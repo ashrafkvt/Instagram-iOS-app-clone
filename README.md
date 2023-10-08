@@ -1,5 +1,5 @@
-# Instagram-iOS-app-clone
-Here I'm building a complete Instagram iOS application clone.
+# Instagram-iOS-app-clone 
+A complete Instagram iOS application clone.
 
 ## Built with
 - [Swift](https://www.apple.com/swift/)
